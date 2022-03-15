@@ -2,6 +2,7 @@
 const { expect } = require("chai");
 const { caesar } = require("../src/caesar");
 
+/*
 describe ("Caesar Test", () => {
     it ("should encode a message by shifting letters a set number of times", () => {
 
@@ -27,22 +28,21 @@ describe ("Caesar Test", () => {
 
     });
 });
-
+*/
 
 describe("Caesar Test Errors", () => {
-    it ("should return false if shift value is undefined", () => {
-
-    });
-
     it ("should return false if shift value is equal to 0", () => {
-
+        const actual = caesar("thinkful", 0);
+        expect(actual).to.be.false;
     });
 
-    it ("should return false if shift value is less than 25", () => {
-
+    it ("should return false if shift value is less than -25", () => {
+        const actual = caesar("thinkful", -27);
+        expect(actual).to.be.false;
     });
 
     it ("should return false if shift value is greater than 25", () => {
-
+        const actual = caesar("thinkful", 30);
+        expect(actual).to.be.false;
     });
 })

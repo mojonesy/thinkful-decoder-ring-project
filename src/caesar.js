@@ -11,7 +11,15 @@ const caesarModule = (function () {
 
 
   function caesar(input, shift, encode = true) {
-    // your solution code here
+    try {
+      if (shift === 0) throw newError("Shift value cannot be 0.");
+      if (shift < -25) throw newError("Shift value must be greater than -25.");
+      if (shift > 25) throw newError("Shift value must be less than 25.");
+    } catch (error) {
+      return false;
+    }
+
+    
   }
 
 
@@ -19,7 +27,7 @@ const caesarModule = (function () {
 
 
 
-  
+
   return {
     caesar,
   };
