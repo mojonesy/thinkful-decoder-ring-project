@@ -2,12 +2,14 @@
 const { expect } = require("chai");
 const { caesar } = require("../src/caesar");
 
-/*
+
 describe ("Caesar Test", () => {
     it ("should encode a message by shifting letters a set number of times", () => {
-
+        const actual = caesar("This is a secret message!", 8);
+        const expected = "bpqa qa i amkzmb umaaiom!";
+        expect(actual).to.equal(expected);
     });
-
+/*
     it ("should decode a message by shifting letters a set number of times", () => {
 
     });
@@ -27,8 +29,9 @@ describe ("Caesar Test", () => {
     it ("should allow a negative integer to shift letters to the left", () => {
 
     });
-});
 */
+});
+
 
 describe("Caesar Test Errors", () => {
     it ("should return false if shift value is equal to 0", () => {
