@@ -4,13 +4,69 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-  // you can add any code you want within this function scope
 
 
+//Helper function 1 = 'encoder'//
+  function encoder(input, shift) {
+    let newInput = input.toLowerCase();
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    let message = '';
 
+    for (let i = 0; i < newInput.length; i++) {
+      const letter = newInput[i];
+      if (!alphabet.includes(letter)) {
+        message = message + letter;
+      }
+      else {
+        const index = alphabet.indexOf(letter);
+        let newIndex = index + shift;
+        if (newIndex >= 26) {
+          newIndex = newIndex - 26;
+        }
+        if (newIndex < 0) {
+          newIndex = newIndex + 26;
+        }
+        message = message + alphabet[newIndex];
+      }
+    }
+    return message;
+  }
 
+//Helper function 2 = 'decoder'//
+  function decoder(input, shift) {
+    let newInput = input.toLowerCase();
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    let message = '';
+
+    for (let i = 0; i < newInput.length; i++) {
+      const letter = newInput[i];
+      if (!alphabet.includes(letter)) {
+        message = message + letter;
+      }
+      else {
+        const index = alphabet.indexOf(letter);
+        let newIndex;
+        if (shift >= 0) {
+          newIndex = index - shift;
+        }
+        else {
+          newIndex = index - (shift + 26);
+        }
+        if (newIndex < 0) {
+          newIndex = newIndex + 26;
+        }
+        if (newIndex >= 26) {
+          newIndex = newIndex - 26;
+        }
+        message = message + alphabet[newIndex];
+      }
+    }
+    return message;
+  }
+
+//Caesar function//
   function caesar(input, shift, encode = true) {
-    try {
+    try {                                                         //Check for input errors//
       if (shift === 0) throw Error("Shift value cannot be 0.");
       if (shift < -25 || shift > 25) throw Error("Shift value must be between -25 and 25.")
     } catch (error) {
@@ -18,54 +74,13 @@ const caesarModule = (function () {
       return false;
     }
 
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    encode = false ? shift *= -1 : shift *= 1;      //If set to decode, shift is set to a negative integer// 
-    let message = input
-      .toLowerCase()
-      .split('');
-    
-    let result = [];
-    message.forEach(([element]) => {
-      for (let i = 0; i < alphabet.length; i++) {
-        const letter = alphabet[i];
-        if (!element === letter) result.push(element);
-        if (element === letter) {                   //if message element matches letter in alphabet...
-          const index = alphabet.indexOf(letter);
-          let newLetter;
-            if (shift >= 1) {
-              newLetter = shiftAlphabetToLeft(shift)[index];      //newLetter is equal to the element at the given index of the shifted alphabet//
-              result.push(newLetter);
-            }
-            if (shift <= -1) {
-              newLetter = shiftAlphabetToRight(shift)[index];
-              result.push(newLetter);
-            }
-        }
-      }
-    });
-    return result.join('');
-  }
-
-
-
-  function shiftAlphabetToLeft(shiftNumber) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    for (let i = 0; i < shiftNumber; i++) {
-        alphabet.push(alphabet.shift());
+    if (encode) {                     //If input is set to encode, refer to helper function 'encode' above.//
+      return encoder(input, shift);
     }
-    return alphabet;
-  }
-
-  function shiftAlphabetToRight(shiftNumber) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    shiftNumber *= -1;
-    for (let i = 0; i < shiftNumber; i++) {
-      alphabet.unshift(alphabet.pop());
+    else {                            //If input is set to decode, refer to helper function 'decode' above.//
+      return decoder(input, shift);
     }
-    return alphabet;
   }
-
-
 
 
   return {
