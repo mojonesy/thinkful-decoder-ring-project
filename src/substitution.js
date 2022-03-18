@@ -6,13 +6,31 @@
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
+
+
   function substitution(input, alphabet, encode = true) {
-    // your solution code here
+//Error handling//
+    try {                                                   
+      if (!alphabet || alphabet.length !== 26) throw Error("Alphabet must contain 26 characters.");
+      for (let i = 0; i < alphabet.length; i++) {
+        for (let j = 0; j < alphabet.length; j++) {
+          if (alphabet[j] === alphabet[i]) throw Error("Alphabet must contain completely unique characters.");
+        }
+      }
+    }
+    catch (error) {
+      console.log(`${error}`);
+      return false;
+    }
   }
+
+
 
   return {
     substitution,
   };
 })();
+
+
 
 module.exports = { substitution: substitutionModule.substitution };
