@@ -7,12 +7,12 @@ This project involved writing complex algorithms in JavaScript, as well as unit 
 
 ---
 
-- _Caesar Shift_ - This cipher shifts the letters of the alphabet left or right by a given number: a positive number shifts to the right, and a negative number to the left. To encode a message, the user inputs a shift number along with the message. To decode, the user needs to know the shift number of the original message.  
+- _Caesar Shift_ - This cipher shifts the letters of the alphabet left or right by a given number: a positive number shifts to the right, and a negative number to the left. To encode a message, the user provides a shift number along with the message. To decode, the user needs to know the shift number of the original message.  
 `Shift = 3: "A" to "D" // Shift = -3: "A" to "X"`
 
 - _Polybius Square_ - The standard alphabet is arranged into a grid, and each letter represents a coordinate.
 ![Polybius Square referenced from geeksforgeeks.org](https://media.geeksforgeeks.org/wp-content/uploads/polybius-square.png)
-An message is represented by the two corresponding numbers in the grid.
+A message is represented by the two corresponding numbers in the grid.
 `"message" = 23513434112251"`
 
 - _Substitution Cipher_ - This cipher requires the user to provide a substitution alphabet. To encode a message, a letter from the standard alphabet is transposed to a letter in the corresponding position in the subsitution alphabet. Decoding involves the opposite process.
