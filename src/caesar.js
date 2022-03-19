@@ -5,8 +5,29 @@
 
 const caesarModule = (function () {
 
+  
 
-//Helper function 1 - 'encoder'//
+//Caesar function//
+  function caesar(input, shift, encode = true) {
+  //Error handling//
+    try {                                                         
+      if (shift === 0) throw Error("Shift value cannot be 0.");
+      if (shift < -25 || shift > 25) throw Error("Shift value must be between -25 and 25.")
+    } catch (error) {
+      console.log(`${error}`);
+      return false;
+    }
+
+    if (encode) {                     //If input is set to encode, refer to helper function 1 'encoder' below//
+      return encoder(input, shift);
+    }
+    else {                            //If input is set to decode, refer to helper function 2 'decoder' below//
+      return decoder(input, shift);
+    }
+  }
+
+
+  //Helper function 1 - 'encoder'//
   function encoder(input, shift) {
     const newInput = input.toLowerCase();
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -31,6 +52,7 @@ const caesarModule = (function () {
     }
     return message;
   }
+
 
 //Helper function 2 - 'decoder'//
   function decoder(input, shift) {
@@ -64,25 +86,6 @@ const caesarModule = (function () {
     return message;
   }
 
-
-//Caesar function//
-  function caesar(input, shift, encode = true) {
-  //Error handling//
-    try {                                                         
-      if (shift === 0) throw Error("Shift value cannot be 0.");
-      if (shift < -25 || shift > 25) throw Error("Shift value must be between -25 and 25.")
-    } catch (error) {
-      console.log(`${error}`);
-      return false;
-    }
-
-    if (encode) {                     //If input is set to encode, refer to helper function 1 'encoder' above//
-      return encoder(input, shift);
-    }
-    else {                            //If input is set to decode, refer to helper function 2 'decoder' above//
-      return decoder(input, shift);
-    }
-  }
 
 
 //Return caesar function//

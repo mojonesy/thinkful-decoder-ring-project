@@ -9,7 +9,8 @@ const polybiusModule = (function () {
 
 
   function polybius(input, encode = true) {
-    try {                                                           //Check for input errors//
+  //Error handling//
+    try {                                                           
       if (!encode && ((input.replace(' ', '').length) % 2) != 0) {
         throw Error("The length of all numbers should be even.");
       }
@@ -63,9 +64,7 @@ const polybiusModule = (function () {
   }
 
 
-
-
-
+//Return Polybius function//
   return {
     polybius,
   };

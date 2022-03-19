@@ -55,6 +55,7 @@ const substitutionModule = (function () {
     return output;
   }
 
+  
 //Helper function 2 - 'decoder'//
   function decoder(input, alphabet) {
     const standardAlph = 'abcdefghijklmnopqrstuvwxyz';
