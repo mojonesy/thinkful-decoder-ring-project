@@ -1,7 +1,7 @@
 # Thinkful JavaScript Project - Decoder Ring
 
 ### **Project Description**:
-_You're planning a surprise birthday party for a friend who loves escape rooms and puzzles. What better way to practice your new coding skills than to build an application that will help you encode and decode all kinds of fun messages?_
+> _You're planning a surprise birthday party for a friend who loves escape rooms and puzzles. What better way to practice your new coding skills than to build an application that will help you encode and decode all kinds of fun messages?_
 
 This project involved writing complex algorithms in JavaScript, as well as unit tests using Mocha and Chai. There are three ciphers in which I wrote functions to either encode or decode a string message. These include a Caesar Shift, a Polybius Square, and a Substitution Cipher.
 
